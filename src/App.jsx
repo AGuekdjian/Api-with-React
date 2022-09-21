@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ListOfGifs from './components/ListOfGifs';
 import Header from './components/Header/header';
@@ -6,9 +6,13 @@ import Header from './components/Header/header';
 import { Link, Route } from 'wouter';
 
 export default function App() {
+
+  const [keyword, setKeyword] = useState('')
+  console.log(keyword)
+
   return (
     <div className="App">
-        <Header/>
+        <Header setKeyword={setKeyword}/>
         <section className='App-content'>
           <h1>App de Gif's</h1>
           <div className='Links-container'>
@@ -19,9 +23,12 @@ export default function App() {
             <Link className='Links-content' to='/gif/superman' >Gif's de Superman</Link>
             <Link className='Links-content' to='/gif/flash' >Gif's de Flash</Link>
           </div>
+          {/* <Route 
+              component={ListOfGifs} 
+              path="/gif/:keyword" /> */}
           <Route 
               component={ListOfGifs} 
-              path="/gif/:keyword" />
+              path={`/gif/:${keyword}`} />
         </section>
     </div>
   ); 

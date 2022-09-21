@@ -11,7 +11,6 @@ export default function ListOfGifs({ params }) {
 
     useEffect(function () {
         setLoading(true)
-        console.log('actualizando los gifs')
         getGifs({ keyword })
             .then(gifs => {
                 setGifs(gifs)
